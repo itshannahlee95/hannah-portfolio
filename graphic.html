@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Graphic Works — Hannah Lee</title>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500&family=Playfair+Display:ital,wght@1,400&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--cream:#f2ede6;--black:#0d0d0d;--red:#1e3a4a;--gray:#888;--mid:#555;--border:#d8d2c8;
+  --script:'Playfair Display',serif;--cond:'Unbounded',sans-serif;--body:'Barlow',sans-serif}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--black);font-family:var(--body);overflow-x:hidden;cursor:none}
+.cur{position:fixed;width:8px;height:8px;background:var(--black);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s}
+.cur.h{width:36px;height:36px;background:transparent;border:1.5px solid var(--black)}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.8rem 3rem;display:flex;justify-content:space-between;align-items:center;background:rgba(242,237,230,0.92);backdrop-filter:blur(8px)}
+.nav-name{font-family:var(--cond);font-weight:400;font-size:.9rem;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:var(--black)}
+.nav-links{display:flex;gap:2.5rem}
+.nav-links a{font-size:.65rem;letter-spacing:.22em;text-transform:uppercase;color:var(--black);text-decoration:none;opacity:.45;transition:opacity .2s}
+.nav-links a:hover,.nav-links a.active{opacity:1}
+.page-hero{padding:10rem 3rem 4rem;border-bottom:1px solid var(--border)}
+.page-back{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;color:var(--gray);display:inline-flex;align-items:center;gap:.5rem;margin-bottom:2rem;transition:color .2s}
+.page-back:hover{color:var(--black)}
+.page-eyebrow{font-family:var(--script);font-style:italic;font-size:1.1rem;color:var(--mid);margin-bottom:.3rem}
+.page-title{font-family:var(--cond);font-weight:400;font-size:clamp(3rem,10vw,8rem);text-transform:uppercase;line-height:.85}
+.page-title-script{display:block;font-family:var(--script);font-style:italic;font-weight:400;font-size:clamp(1.2rem,3vw,2.5rem);color:var(--mid);margin-top:.3rem}
+.page-count{font-size:.62rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gray);margin-top:1.5rem}
+.works{padding:4rem 3rem 6rem}
+.proj-item{display:grid;grid-template-columns:3rem 1fr auto;gap:1.5rem;align-items:center;padding:1.8rem 0;border-bottom:1px solid var(--border);text-decoration:none;color:inherit;transition:padding .2s;cursor:none;position:relative}
+.proj-item:hover{padding-left:.6rem}
+.proj-num{font-size:.65rem;letter-spacing:.1em;color:var(--gray)}
+.proj-title{font-family:var(--cond);font-weight:400;font-size:clamp(1.4rem,2.8vw,2.2rem);text-transform:uppercase;letter-spacing:.02em;line-height:1}
+.proj-script{font-family:var(--script);font-style:italic;font-size:.9rem;color:var(--mid);margin-left:.4rem}
+.proj-meta{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gray);margin-top:.3rem}
+.proj-tags{display:flex;gap:.4rem;margin-top:.4rem;flex-wrap:wrap}
+.ptag{font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;border:1px solid #ccc;padding:.15rem .5rem;color:var(--mid)}
+.proj-arrow{font-size:1.1rem;color:var(--gray);transition:transform .2s;min-width:20px}
+.proj-item:hover .proj-arrow{transform:translate(3px,-3px);color:var(--black)}
+.proj-thumb-hover{position:fixed;width:220px;height:150px;object-fit:cover;pointer-events:none;z-index:50;opacity:0;transition:opacity .25s;border:1px solid var(--border);display:none}
+@media(min-width:769px){.proj-thumb-hover{display:block}}
+.loading{padding:3rem 0;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gray)}
+.foot-nav{padding:3rem;border-top:1px solid var(--border);display:flex;justify-content:space-between}
+.foot-nav a{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;color:var(--black);border-bottom:1px solid var(--black);padding-bottom:2px;transition:opacity .2s}
+.foot-nav a:hover{opacity:.5}
+footer{padding:1.5rem 3rem;border-top:1px solid var(--border);display:flex;justify-content:space-between}
+footer span{font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gray)}
+@media(max-width:768px){
+  nav,.page-hero,.works,.foot-nav,footer{padding-left:1.5rem;padding-right:1.5rem}
+  .proj-item{grid-template-columns:2rem 1fr auto;gap:.8rem}
+}
+</style>
+</head>
+<body>
+<div class="cur" id="cur"></div>
+<img class="proj-thumb-hover" id="thumbHover" src="" alt="">
+<nav>
+  <a class="nav-name" href="index.html">Hannah Lee</a>
+  <div class="nav-links">
+    <a href="ui.html">UI</a>
+    <a href="graphic.html" class="active">Graphic</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+</nav>
+<header class="page-hero">
+  <a class="page-back" href="index.html">← Back</a>
+  <div class="page-eyebrow">a collection of</div>
+  <div class="page-title">GRAPHIC<span class="page-title-script">Brand, Print &amp; Packaging</span></div>
+  <div class="page-count" id="projCount">Loading...</div>
+</header>
+<section class="works">
+  <div id="projList"><div class="loading">Loading projects...</div></div>
+</section>
+<div class="foot-nav">
+  <a href="index.html">← Home</a>
+  <a href="ui.html">UI Works →</a>
+</div>
+<footer>
+  <span>© 2025 Hannah Lee</span>
+  <span>Taipei, Taiwan</span>
+</footer>
+<script>
+const cur = document.getElementById('cur');
+const thumb = document.getElementById('thumbHover');
+document.addEventListener('mousemove', e => {
+  cur.style.left = e.clientX + 'px';
+  cur.style.top = e.clientY + 'px';
+  thumb.style.left = (e.clientX + 20) + 'px';
+  thumb.style.top = (e.clientY - 75) + 'px';
+});
+document.querySelectorAll('a:not(.proj-item)').forEach(el => {
+  el.addEventListener('mouseenter', () => cur.classList.add('h'));
+  el.addEventListener('mouseleave', () => cur.classList.remove('h'));
+});
+
+// 載入 Graphic 作品
+async function loadProjects() {
+  try {
+    const res = await fetch('/api/projects?category=Graphic');
+    const projects = await res.json();
+    const container = document.getElementById('projList');
+    document.getElementById('projCount').textContent = projects.length + ' Projects';
+
+    if (!projects.length) {
+      container.innerHTML = '<div class="loading">No projects yet — add some in Notion!</div>';
+      return;
+    }
+
+    container.innerHTML = projects.map((p, i) => `
+      <a class="proj-item" href="${p.link || '#'}" ${p.link ? 'target="_blank"' : ''}
+         data-thumb="${p.cover || ''}">
+        <div class="proj-num">${String(i+1).padStart(2,'0')}</div>
+        <div class="proj-main">
+          <div class="proj-title">${p.title}${p.script ? ` <span class="proj-script">${p.script}</span>` : ''}</div>
+          <div class="proj-meta">${[p.category, p.year].filter(Boolean).join(' · ')}</div>
+          ${p.tags?.length ? `<div class="proj-tags">${p.tags.map(t=>`<span class="ptag">${t}</span>`).join('')}</div>` : ''}
+        </div>
+        <div class="proj-arrow">↗</div>
+      </a>
+    `).join('');
+
+    // hover thumb
+    container.querySelectorAll('.proj-item').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        cur.classList.add('h');
+        const src = el.dataset.thumb;
+        if (src) { thumb.src = src; thumb.style.opacity = '1'; }
+      });
+      el.addEventListener('mouseleave', () => {
+        cur.classList.remove('h');
+        thumb.style.opacity = '0';
+      });
+    });
+  } catch(e) {
+    document.getElementById('projList').innerHTML = '<div class="loading">Failed to load — check your API settings.</div>';
+  }
+}
+loadProjects();
+</script>
+</body>
+</html>
